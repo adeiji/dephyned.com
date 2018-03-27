@@ -184,6 +184,7 @@ h1, h2, h3, h4, h5, h6{	font-family:'Source Sans Pro', sans-serif;	color:#1f1f1f
 	position:relative;
 }
 
+.justified-text{text-align:justify;}
 .center-text{text-align:center;}
 .left-tex{text-align:left;}
 .right-text{text-align:right;}
