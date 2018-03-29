@@ -1,0 +1,40 @@
+Accordian 
+
+<!--  Accordion -->
+							<!-- <div id="accordion_holder">	
+								<h4>Why choose us?</h4>
+
+								<ul class="accordion clearfix">
+																		
+									<li id="text_1">
+										<a href="#text1">Lorem ipsum dolor sit amet, consectetur adipiscing elit?</a>								
+										<div>
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+											   Nostrud exercitation ullamco laboris aliquipea commodo consequat. 
+											</p>
+										</div>									
+									</li>				
+																				
+									<li id="text_2">
+										<a href="#text2">Aenean consequat lorem ut felis ullamcorper?</a>								
+										<div>
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+												Ut enim ad minim veniam. 										
+											</p>
+										</div>									
+									</li>
+																			
+									<li id="text_3">
+										<a href="#text3">Aenean rhoncus diam eleifend, pulvinar feugiat feugiat dolor?</a>								
+										<div>
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+												Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+											</p>
+										</div>									
+									</li>
+
+								</ul>	
+								
+							</div>	 End Accordion -->
+							
+						</div>	<!-- End About-1 Text --> 

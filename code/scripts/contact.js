@@ -33,7 +33,8 @@ jQuery(document).ready(function($) {
 		var formInput = $('#' + currentForm).serialize();		
 		$.post($('#' + currentForm).attr('action'),formInput, function(data){			
 			$('#' + currentForm).hide();
-			$('#formSuccessMessageWrap').fadeIn(500);			
+      $('#formSuccessMessageWrap').fadeIn(500);			      
+      fbq('track', 'Lead');
 		});
 
 	};
