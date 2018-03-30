@@ -112,6 +112,76 @@
 </div> 
 <div class="slider-clear"></div>
 
+<div class="content"  data-scroll-index="5">
+	<div class="box-960">
+    	<div class="decoration"></div>
+        <div class="welcome-container larger-text animated slideInDown">
+    		<h1 class="center-text heading">We'd like to hear from you!</h1>
+            <p class="center-text">
+                Contact us now.  Our schedule fills up quickly.
+            </p>     
+        	<div class="orange-decoration hide-if-mobile"></div>
+        	<div class="decoration hide-if-responsive"></div>
+        </div>
+        <div class="container no-bottom">
+            
+        
+            <div class="decoration hide-if-responsive"></div>
+        
+            <div class="contact-box ">
+                <h5 class="hide-if-mobile">Send us your thoughts!</h5>
+                <div class="contact-form no-bottom"> 
+                    <div class="formSuccessMessageWrap" id="formSuccessMessageWrap">
+                        <div class="big-notification green-notification full-bottom">
+                            <h5 class="uppercase">Your message has been sent</h5>
+                            <a href="#" class="close-big-notification">x</a>
+                            <p>Message sent successfully, please allow up to 48 hours for a reply. Thank you for reaching out to Dephyned.</p>
+                        </div>    
+                    </div>
+                    <form action="/sendEmail" method="post" class="contactForm" id="contactForm">
+                        <fieldset class="full-bottom">  
+                            <div class="formFieldWrap container">
+                                <label class="field-title contactNameField" for="contactNameField">
+                                    Name
+                                    <em class="formValidationError no-bottom" id="contactNameFieldError">field is required!</em>
+                                    <span>(required)</span>
+                                </label>
+                                <input type="text" name="contactNameField" value="" class="contactField field-deco requiredField" id="contactNameField"/>
+                            </div>
+                            <div class="formFieldWrap container">
+                                <label class="field-title contactEmailField" for="contactEmailField">
+                                    Email 
+                                    <em class="formValidationError no-bottom" id="contactEmailFieldError">field is required!</em>
+                                    <em class="formValidationError no-bottom" id="contactEmailFieldError2">address is not valid!</em>
+                                    <span>(required)</span>
+                                </label>
+                                <input type="text" name="contactEmailField" value="" class="contactField field-deco requiredField requiredEmailField" id="contactEmailField"/>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="formTextareaWrap container">
+                                <label class="field-title contactMessageTextarea" for="contactMessageTextarea">
+                                    Message 
+                                    <span>(required)</span>
+                                    <em class="formValidationError no-bottom" id="contactMessageTextareaError">field is empty</em>
+                                </label>
+                                <textarea name="contactMessageTextarea" class="contactTextarea field-deco requiredField" id="contactMessageTextarea"></textarea>
+                            </div>
+                            <div class="formSubmitButtonErrorsWrap">
+                                <i class="fa fa-envelope"></i>
+                                <input type="submit" class="buttonWrap contactSubmitButton" id="contactSubmitButton" value="Send" data-formId="contactForm" />
+                            </div>
+                            <!-- <a href="#" class="facebook-box-button"><i class="fa fa-facebook"></i>Fan Box</a>
+                            <a href="#" class="twitter-box-button"><i class="fa fa-twitter"></i>Follow Us</a> -->
+                        </fieldset>
+                    </form>       
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- <div class="orange-decoration hide-if-mobile"></div>
+        <div class="decoration hide-if-responsive"></div> -->
+	</div>
+</div>
 
 <div class="content" data-scroll-index="1">
 	<div class="box-960">
@@ -508,80 +578,9 @@
 </div> -->
 
 <div class="content"  data-scroll-index="5">
-	<div class="box-960">
-    	<div class="decoration"></div>
-        <div class="welcome-container larger-text animated slideInDown">
-    		<h1 class="center-text heading">We'd like to hear from you!</h1>
-            <p class="center-text">
-                Contact us now.  My schedule fills up quickly.
-            </p>     
-        	<div class="orange-decoration hide-if-mobile"></div>
-        	<div class="decoration hide-if-responsive"></div>
-        </div>
-        <div class="container no-bottom">
-            
-        
-            <div class="decoration hide-if-responsive"></div>
-        
-            <div class="contact-box full-bottom last delay-1000 animated fadeIn">
-                <h5 class="hide-if-mobile">Send us your thoughts!</h5>
-                <div class="contact-form no-bottom"> 
-                    <div class="formSuccessMessageWrap" id="formSuccessMessageWrap">
-                        <div class="big-notification green-notification full-bottom">
-                            <h5 class="uppercase">Your message has been sent</h5>
-                            <a href="#" class="close-big-notification">x</a>
-                            <p>Message sent successfully, please allow up to 48 hours for a reply. Thank you for reaching out to Dephyned.</p>
-                        </div>    
-                    </div>
-                    <form action="/sendEmail" method="post" class="contactForm" id="contactForm">
-                        <fieldset class="full-bottom">  
-                            <div class="formFieldWrap container">
-                                <label class="field-title contactNameField" for="contactNameField">
-                                    Name
-                                    <em class="formValidationError no-bottom" id="contactNameFieldError">field is required!</em>
-                                    <span>(required)</span>
-                                </label>
-                                <input type="text" name="contactNameField" value="" class="contactField field-deco requiredField" id="contactNameField"/>
-                            </div>
-                            <div class="formFieldWrap container">
-                                <label class="field-title contactEmailField" for="contactEmailField">
-                                    Email 
-                                    <em class="formValidationError no-bottom" id="contactEmailFieldError">field is required!</em>
-                                    <em class="formValidationError no-bottom" id="contactEmailFieldError2">address is not valid!</em>
-                                    <span>(required)</span>
-                                </label>
-                                <input type="text" name="contactEmailField" value="" class="contactField field-deco requiredField requiredEmailField" id="contactEmailField"/>
-                            </div>
-                            <div class="clear"></div>
-                            <div class="formTextareaWrap container">
-                                <label class="field-title contactMessageTextarea" for="contactMessageTextarea">
-                                    Message 
-                                    <span>(required)</span>
-                                    <em class="formValidationError no-bottom" id="contactMessageTextareaError">field is empty</em>
-                                </label>
-                                <textarea name="contactMessageTextarea" class="contactTextarea field-deco requiredField" id="contactMessageTextarea"></textarea>
-                            </div>
-                            <div class="formSubmitButtonErrorsWrap">
-                                <i class="fa fa-envelope"></i>
-                                <input type="submit" class="buttonWrap contactSubmitButton" id="contactSubmitButton" value="Send" data-formId="contactForm" />
-                            </div>
-                            <!-- <a href="#" class="facebook-box-button"><i class="fa fa-facebook"></i>Fan Box</a>
-                            <a href="#" class="twitter-box-button"><i class="fa fa-twitter"></i>Follow Us</a> -->
-                        </fieldset>
-                    </form>       
-                </div>
-            </div>
-            <div class="clear"></div>
-        </div>
-        <!-- <div class="orange-decoration hide-if-mobile"></div>
-        <div class="decoration hide-if-responsive"></div> -->
-	</div>
-</div>
-
-<div class="content"  data-scroll-index="5">
 	<div class="box-960 animated slideInDown">
         <div class="welcome-container larger-text">
-    		<h1 class="center-text heading">Contact Me Now For A Free Implementation Plan!</h1>
+    		<h1 class="center-text heading">Contact Us Now For A Free Implementation Plan!</h1>
             <p class="center-text">
             	We'll talk about your app idea, and discover the quickest way to go from idea to profit.
             </p>     
