@@ -9,9 +9,10 @@ exports.sendEmail = function sendEmail (request, response) {
 	console.log('Request Received');
 	var email = request.body.contactEmailField;
 	var name = request.body.contactNameField;
-	var message = request.body.contactMessageTextarea;
+  var message = request.body.contactMessageTextarea;
+  var personalPromoCode = request.body.personalPromoCode;
 	//Get an HTML document which is the body of the actual email
-	var html = getHTMLDocument(email, name, message);
+	var html = getHTMLDocument(email, name, message, personalPromoCode);
 	//var from_email = 'customercare@smart-two.com';
 	var from_email = 'adebayoiji@gmail.com';
 	var from_name = 'Dephyned Customer Info Form';
@@ -86,7 +87,7 @@ function changeDateToUSA (date)
 }
 
 //
-function getHTMLDocument (email, name, message) {
+function getHTMLDocument (email, name, message, personalPromoCode) {
 	var html = '<html>' +	
 					'<head>' +
 						'<style>' +
@@ -118,7 +119,8 @@ function getHTMLDocument (email, name, message) {
 						'<div id = "content">' +
     						'<p>Name: ' + name + '</p>' +
     						'<p>Email Address: ' + email + '</p>' +
-    						'<p>Message: ' + message + '</p>' +
+                '<p>Message: ' + message + '</p>' +
+                '<p>Personal Promo Code: ' + personalPromoCode + '</p>' +
 						'</div>' +
 					'</body>' +
 				'</html>'	

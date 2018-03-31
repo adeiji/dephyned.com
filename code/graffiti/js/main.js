@@ -1,6 +1,23 @@
 $(function () {
     "use strict";
 
+    var promoCode = "BETA" + (Math.floor(Math.random()*90000) + 10000);
+    var promoPhrase = "Enter promo code " + promoCode + " when you sign up"
+    $(document).ready(function () {
+      $(".promo").append(promoPhrase)
+      $('#cp-notification').hide()
+    });
+
+    $(".copy-button").click(function () {
+      var $temp = $("<input>");
+      $("body").append($temp);
+      $temp.val($($(".promo")).text()).select();
+      document.execCommand("copy");
+      $temp.remove();            
+      $('#cp-notification').hide().html('<span class="success"><i class="fa fa-envelope"></i>' + "Promo phrase copied to clipboard" + '</span>').fadeIn("slow");
+    })
+
+
 
     /* ==========================================================================
    onscroll animation
@@ -83,15 +100,26 @@ $(function () {
     
     function register($form) {
 
-        var formContent = $form.serialize();
-        var fieldName = formContent.substring(0, formContent.indexOf('='));
-        var fieldValue = formContent.substring(formContent.indexOf('=') + 1, formContent.length);
-        fieldValue = fieldValue.replace('%40', '@');
+        var formContent = $form.serializeArray();
+        var values = {};
+        for (var i=0; i < formContent.length; i ++) {
+          if (formContent[i].name == "email") {
+            var fieldValue = formContent[i].value.replace('%40', '@');
+            values.contactEmailField = fieldValue;
+          } else if (formContent[i].name == "promoCode") {
+            values.contactMessageTextarea = formContent[i].value;
+          }
+        }
+        
+        if (!values.contactMessageTextarea) {
+          values.contactMessageTextarea = "NO PROMO CODE";
+        }        
+        values.personalPromoCode = promoCode;
 
         $.ajax({
             type: $form.attr('method'),
             url: $form.attr('action'),
-            data: JSON.stringify({ contactEmailField : fieldValue }),
+            data: JSON.stringify(values),
             cache: false,
             dataType: 'json',
             contentType: "application/json; charset=utf-8",

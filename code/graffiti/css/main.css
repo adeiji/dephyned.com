@@ -9,6 +9,37 @@ body {
   width: 100%;
 }
 
+.sub-form input {
+  margin-bottom: 10px;
+}
+
+.promo {
+  font-weight: 800;
+  font-size: 18px;
+  border: solid;
+  border-color: white;
+  border-width: 1px;
+  padding: 10px;
+  width: 80%;
+  float: left;
+  height: 100%;
+}
+
+.copy-wrapper {
+  height: 75px;
+  width: 100%;
+}
+
+.copy-button {
+  float: right;
+  height: 100%;
+  width: 18%;
+}
+
+.info {
+  font-size: 12px;
+}
+
 body {
   font-family: 'Raleway', sans-serif;
   font-weight: 300;
@@ -48,7 +79,7 @@ li {
 
 
 .main-header {
-  background: url(../img/bg.jpg) center center no-repeat scroll;
+  
   -webkit-background-size: 100% 50%;
   background-size: 100% 50%;
   padding: 3.2em 0;
@@ -77,6 +108,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#800099cc', e
 }
 
 .logo { margin-bottom: 1.6em; }
+
+.head-hero {
+  color: white;
+}
 
 .head-hero h1 {
   font-size: 36.492px;
@@ -188,6 +223,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#800099cc', e
 #mc-notification .alert,
 #form-messages.error { background: rgba(231, 76, 60, 0.7); }
 
+#cp-notification { 
+  background: rgba(39, 174, 96, 0.7); 
+  padding: .4em 0 .4em 1em;
+  border-radius: 4px;
+  color: white;
+  display: block;
+}
 #mc-notification .success,
 #form-messages.success { background: rgba(39, 174, 96, 0.7); }
 
@@ -417,7 +459,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#800099cc', e
 
 .main-header {
   min-height: 50%;
-  background: url(../img/bg.jpg) center center no-repeat fixed;
   -webkit-background-size: cover;
   background-size: cover;
 }
@@ -430,6 +471,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#800099cc', e
 .hero-img {
   margin-top: -3.2em;
   max-width: none;
+}
+
+.sub-form input {
+  margin-bottom: 10px;
 }
 
 .subscribe { margin: 3.2em 0 0; }
