@@ -81,7 +81,7 @@ exports.sendEmail = function sendEmail (request, response) {
     			status  : 200,	
     			success : 'Updated Successfully'
 			}
-      saveTester(request.body);
+      // saveTester(request.body);
 			response.end(JSON.stringify(responseJSON));
 	}, function(e) {      
 	    // Mandrill returns the error as an object with name and message keys
