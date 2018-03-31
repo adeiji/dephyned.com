@@ -2,7 +2,26 @@ var api_key = '815veNK75NfrlNRIDgguNw';
 
 var mandrill = require('mandrill-api/mandrill');
 var mandrill_client = new mandrill.Mandrill(api_key);
+var mongoose = require('mongoose');
+var Tester = require('./models/betatesters')
 
+function saveTester (body) {
+  var tester = new Tester({
+    email: body.contactEmailField.toUpperCase(),
+    code: body.personalPromoCode.toUpperCase(),
+    inviteeCode: body.contactMessageTextarea.toUpperCase(),
+    date: new Date()
+  })
+
+  if (tester) {
+    tester.save(function (err, savedTester) {
+      if (err) {
+        return err;
+      } 
+    }) 
+  }
+  
+}
 
 exports.sendEmail = function sendEmail (request, response) {
 
@@ -62,9 +81,9 @@ exports.sendEmail = function sendEmail (request, response) {
     			status  : 200,	
     			success : 'Updated Successfully'
 			}
-
+      saveTester(request.body);
 			response.end(JSON.stringify(responseJSON));
-	}, function(e) {
+	}, function(e) {      
 	    // Mandrill returns the error as an object with name and message keys
 	    console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
 	    response.send('Failed to send');
@@ -120,7 +139,7 @@ function getHTMLDocument (email, name, message, personalPromoCode) {
     						'<p>Name: ' + name + '</p>' +
     						'<p>Email Address: ' + email + '</p>' +
                 '<p>Message: ' + message + '</p>' +
-                '<p>Personal Promo Code: ' + personalPromoCode + '</p>' +
+                '<p>Personal Promo Code: ' + personalPromoCode.toUpperCase() + '</p>' +
 						'</div>' +
 					'</body>' +
 				'</html>'	

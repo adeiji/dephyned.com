@@ -5,7 +5,7 @@ $(function () {
     var promoPhrase = "Enter promo code " + promoCode + " when you sign up"
     $(document).ready(function () {
       $(".promo").append(promoPhrase)
-      $('#cp-notification').hide()
+      $('#cp-notification').hide()      
     });
 
     $(".copy-button").click(function () {
@@ -15,9 +15,7 @@ $(function () {
       document.execCommand("copy");
       $temp.remove();            
       $('#cp-notification').hide().html('<span class="success"><i class="fa fa-envelope"></i>' + "Promo phrase copied to clipboard" + '</span>').fadeIn("slow");
-    })
-
-
+    })        
 
     /* ==========================================================================
    onscroll animation
@@ -180,8 +178,6 @@ $(function () {
             }
         }
     });
-
-   
-
+  
 
 });

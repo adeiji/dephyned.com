@@ -7,6 +7,18 @@ function start ()
 	var fs = require("fs");
 	var express = require('express');
 	var app = express();
+  var mongoose = require('mongoose');
+
+  if (process.env.ENV == 'production') {
+    var mongoDB = "mongodb://adeiji:6Ab7boy!!@localhost:27017/graffiti";
+  } else {
+    var mongoDB = "mongodb://localhost/graffiti"
+  }
+
+  mongoose.connect(mongoDB);
+  mongoose.Promise = global.Promise;
+  var db = mongoose.connection;
+  db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 	app.configure(function () {
 		app.use(express.bodyParser());
