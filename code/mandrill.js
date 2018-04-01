@@ -81,8 +81,7 @@ exports.sendEmail = function sendEmail (request, response) {
     			status  : 200,	
     			success : 'Updated Successfully'
         }
-
-        // saveTester(request.body);
+        
         response.end(JSON.stringify(responseJSON));
         
         if (personalPromoCode) {
@@ -121,7 +120,8 @@ exports.sendEmail = function sendEmail (request, response) {
               var responseJSON = {
                 status  : 200,	
                 success : 'Updated Successfully'
-            }          
+              }
+              saveTester(request.body);          
           }, function(e) {      
             // Mandrill returns the error as an object with name and message keys
             console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);          
