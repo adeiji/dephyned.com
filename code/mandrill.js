@@ -13,11 +13,15 @@ function saveTester (body) {
     date: new Date()
   })
 
+
   if (tester) {
     tester.save(function (err, savedTester) {
       if (err) {
+        console.log(err);
         return err;
-      } 
+      } else {
+        console.log(savedTester);
+      }
     }) 
   }
   
