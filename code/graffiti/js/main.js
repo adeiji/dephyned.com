@@ -133,7 +133,7 @@ $(function () {
                 
                 } else {
                     var message = data.message;
-                    $('#mc-notification').hide().html('<span class="success"><i class="fa fa-envelope"></i>' + 'Awesome! Thanks for signing up!' + '</span>').fadeIn("slow");
+                    $('#mc-notification').hide().html('<span class="success"><i class="fa fa-envelope"></i>' + 'Awesome! Thanks for signing up!  An introductory email was just sent to you!' + '</span>').fadeIn("slow");
                 
                 }
             }

@@ -33,7 +33,7 @@ exports.sendEmail = function sendEmail (request, response) {
 	//Get an HTML document which is the body of the actual email
 	var html = getHTMLDocument(email, name, message, personalPromoCode);
 	//var from_email = 'customercare@smart-two.com';
-	var from_email = 'adebayoiji@gmail.com';
+	var from_email = 'graffiti@dephyned.com';
 	var from_name = 'Dephyned Customer Info Form';
 	console.log(request.body);
 	var to_email = 'adebayoiji@gmail.com';
@@ -80,9 +80,54 @@ exports.sendEmail = function sendEmail (request, response) {
 	    	var responseJSON = {
     			status  : 200,	
     			success : 'Updated Successfully'
-			}
-      // saveTester(request.body);
-			response.end(JSON.stringify(responseJSON));
+        }
+
+        // saveTester(request.body);
+        response.end(JSON.stringify(responseJSON));
+        
+        if (personalPromoCode) {
+          var promoHTML = getPromoDocument(personalPromoCode)
+          var promoMessage = {
+              'html' 			: promoHTML,
+              'subject'		: 'Thank You For Signing Up As a Beta Tester and App Influencer For Graffiti!',
+              'from_email' 	: 'graffiti@dephyned.com',
+              'from_name'		: 'Graffiti App',
+              'to'			: [{
+                email 	: email,
+                name 	: 'Valued Beta Tester and App Influencer',
+                type    : 'to'
+              }],
+              'headers' : {
+                'Reply-To'	: 'graffiti@dephyned.com'
+              },
+              "important": false,
+                "track_opens": true,
+                "track_clicks": true,
+                "auto_text": null,
+                "auto_html": null,
+                "inline_css": true,
+                "url_strip_qs": null,
+                "preserve_recipients": null,
+                "view_content_link": null,
+                "tracking_domain": null,
+                "signing_domain": null,
+                "return_path_domain": null,
+                "merge": true
+          }
+      
+          mandrill_client.messages.send({"message": promoMessage, "async": async, "ip_pool": ip_pool }, 
+          function(result) {
+              console.log(result);
+              var responseJSON = {
+                status  : 200,	
+                success : 'Updated Successfully'
+            }          
+          }, function(e) {      
+            // Mandrill returns the error as an object with name and message keys
+            console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);          
+            // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+          });
+        }      
 	}, function(e) {      
 	    // Mandrill returns the error as an object with name and message keys
 	    console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
@@ -90,54 +135,6 @@ exports.sendEmail = function sendEmail (request, response) {
 	    response.end();
 	    // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
   });
-  
-  if (personalPromoCode) {
-    var promoHTML = getPromoDocument(personalPromoCode)
-    var promoMessage = {
-        'html' 			: promoHTML,
-        'subject'		: 'Thank You For Signing Up As a Beta Tester and App Influencer For Graffiti!',
-        'from_email' 	: 'graffiti@dephyned.com',
-        'from_name'		: 'Graffiti App',
-        'to'			: [{
-          email 	: email,
-          name 	: 'Valued Beta Tester and App Influencer',
-          type    : 'to'
-        }],
-        'headers' : {
-          'Reply-To'	: 'graffiti@dephyned.com'
-        },
-        "important": false,
-          "track_opens": true,
-          "track_clicks": true,
-          "auto_text": null,
-          "auto_html": null,
-          "inline_css": true,
-          "url_strip_qs": null,
-          "preserve_recipients": null,
-          "view_content_link": null,
-          "tracking_domain": null,
-          "signing_domain": null,
-          "return_path_domain": null,
-          "merge": true
-    }
-
-    mandrill_client.messages.send({"message": promoMessage, "async": async, "ip_pool": ip_pool }, 
-		function(result) {
-	    	console.log(result);
-	    	var responseJSON = {
-    			status  : 200,	
-    			success : 'Updated Successfully'
-			}
-      // saveTester(request.body);
-			response.end(JSON.stringify(responseJSON));
-	  }, function(e) {      
-	    // Mandrill returns the error as an object with name and message keys
-	    console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
-	    response.send('Failed to send');
-	    response.end();
-	    // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
-    });
-  }
 }
 
 function changeDateToUSA (date)
@@ -422,7 +419,7 @@ function getPromoDocument (personalPromoCode) {
                               <tbody>
                                 <tr>
                                   <td align="center" valign="top" style="font-family: Verdana, Geneva, sans-serif; font-size: 14px; color: rgb(71, 70, 70); font-weight: lighter; position: relative;"
-                                    class="editor mce-content-body" id="mce_0">email : ade@dephyned.com</td>
+                                    class="editor mce-content-body" id="mce_0">email : graffiti@dephyned.com</td>
                                 </tr>
                               </tbody>
                             </table>
@@ -518,7 +515,7 @@ function getPromoDocument (personalPromoCode) {
                                           <td align="left" valign="top" style="font-family: Verdana, Geneva, sans-serif; font-size: 13px; color: rgb(255, 255, 255); line-height: 22px; font-weight: normal; padding-bottom: 12px; position: relative;"
                                             class="editor mce-content-body" id="mce_263">Thank you for becoming a Beta Tester and App Influencer for Graffiti
                                             <br>
-                                            <br>Follow our Facebook page to stay up to date and to make suggestions of features that you would like to see in the app.
+                                            <br>Follow our Facebook page to stay up to date and to make suggestions of features that you would like to see in the app
                                             <br>                                           
                                           </td>
                                         </tr>
@@ -655,7 +652,7 @@ function getPromoDocument (personalPromoCode) {
                                       <tbody>
                                         <tr>
                                           <td align="left" valign="top" style="font-family: Verdana, Geneva, sans-serif; font-size: 13px; color: rgb(255, 255, 255); line-height: 22px; font-weight: normal; padding-bottom: 12px; position: relative;"
-                                            class="editor mce-content-body" id="mce_266">Invite friends by adding their emails to DEPHYNED.COM/GRAFFITI
+                                            class="editor mce-content-body" id="mce_266">Invite friends by adding their emails to dephyned.com/graffiti
                                             <br>
                                             Make sure to enter the code ` + personalPromoCode.toUpperCase() + ` when you add their emails
                                             </td>
