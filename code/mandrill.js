@@ -392,7 +392,7 @@ function getPromoDocument (personalPromoCode) {
                       <tbody>
                         <tr>
                           <td height="16" align="center" valign="middle" style="line-height:16px;">
-                            <img src="http://dephyned.com/graffiti/images/space.png" width="4" height="4" alt="">
+                            <img src="http://dephyned.com/email/images/space.png" width="4" height="4" alt="">
                           </td>
                         </tr>
                         <tr class="imageUpload">
@@ -403,7 +403,7 @@ function getPromoDocument (personalPromoCode) {
   
   
                             <a href="#">
-                              <img class="imgUp" src="http://dephyned.com/graffiti/images/logo-text.png" width="93" height="29" alt="">
+                              <img class="imgUp" src="http://dephyned.com/email/images/logo-text.png" width="93" height="29" alt="">
                             </a>
                           </td>
                         </tr>
@@ -458,7 +458,7 @@ function getPromoDocument (personalPromoCode) {
               <tbody>
                 <tr class="imageUpload">
                   <td align="center" valign="top" bgcolor="#FFFFFF" style="background:#FFF; position:relative;">
-                    <img class="imgUp" src="http://dephyned.com/graffiti/images/graffitilogo-wide.jpg" width="700" height="460" style="display:block;width:100% !important; height:auto !important; "
+                    <img class="imgUp" src="http://dephyned.com/email/images/graffitilogo-wide.jpg" width="700" height="460" style="display:block;width:100% !important; height:auto !important; "
                       alt="">
                   </td>
                 </tr>
@@ -483,7 +483,7 @@ function getPromoDocument (personalPromoCode) {
                         <tr class="imageUpload">
                           <td align="center" valign="top" style="position: relative;">
   
-                            <img class="imgUp" src="http://dephyned.com/graffiti/images/makemoney.jpeg" width="350" height="310" style="display:block;width:100% !important; height:auto !important; "
+                            <img class="imgUp" src="http://dephyned.com/email/images/makemoney.jpeg" width="350" height="310" style="display:block;width:100% !important; height:auto !important; "
                               alt="">
                           </td>
                         </tr>
@@ -570,7 +570,7 @@ function getPromoDocument (personalPromoCode) {
             <table width="700" border="0" align="center" cellpadding="0" cellspacing="0" class="main">
               <tbody>
                 <tr>
-                  <td height="310" align="center" valign="middle" bgcolor="#1a1d26" class="banImg" style="background-image:url(http://dephyned.com/graffiti/images/holdmoney.jpg); background-size:cover; width:100% !important;background-repeat: no-repeat; background-position:center; background-color:rgba(0, 0, 0, .7); height:310px;">
+                  <td height="310" align="center" valign="middle" bgcolor="#1a1d26" class="banImg" style="background-image:url(http://dephyned.com/email/images/holdmoney.jpg); background-size:cover; width:100% !important;background-repeat: no-repeat; background-position:center; background-color:rgba(0, 0, 0, .7); height:310px;">
                     <table width="570" border="0" align="center" cellpadding="0" cellspacing="0" class="two-left">
                       <tbody>
                         <tr>
@@ -622,7 +622,7 @@ function getPromoDocument (personalPromoCode) {
                       <tbody>
                         <tr class="imageUpload">
                           <td align="center" valign="top" style="position: relative;">
-                            <img class="imgUp" src="http://dephyned.com/graffiti/images/mobileapp.jpeg" width="350" height="310" style="display:block;width:100% !important; height:auto !important; "
+                            <img class="imgUp" src="http://dephyned.com/email/images/mobileapp.jpeg" width="350" height="310" style="display:block;width:100% !important; height:auto !important; "
                               alt="">
                           </td>
                         </tr>
@@ -671,7 +671,7 @@ function getPromoDocument (personalPromoCode) {
                                                     <a href="http://dephyned.com/graffiti" style="text-decoration: none; color: rgb(45, 179, 255); background: white; padding: 10px; border-radius: 5px;">Invite Friends</a>
                                                   </td>
                                                   <td width="16" align="left" valign="middle" style="padding-top:2px;">
-                                                    <img src="http://dephyned.com/graffiti/images/arrow.png" width="16" height="16" alt="">
+                                                    <img src="http://dephyned.com/email/images/arrow.png" width="16" height="16" alt="">
                                                   </td>
                                                 </tr>
                                               </tbody>
