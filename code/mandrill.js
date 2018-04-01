@@ -96,7 +96,7 @@ exports.sendEmail = function sendEmail (request, response) {
     var promoMessage = {
         'html' 			: promoHTML,
         'subject'		: 'Thank You For Signing Up As a Beta Tester and App Influencer For Graffiti!',
-        'from_email' 	: 'info@dephyned.com',
+        'from_email' 	: 'graffiti@dephyned.com',
         'from_name'		: 'Graffiti App',
         'to'			: [{
           email 	: email,
@@ -104,7 +104,7 @@ exports.sendEmail = function sendEmail (request, response) {
           type    : 'to'
         }],
         'headers' : {
-          'Reply-To'	: 'info@dephyned.com'
+          'Reply-To'	: 'graffiti@dephyned.com'
         },
         "important": false,
           "track_opens": true,
