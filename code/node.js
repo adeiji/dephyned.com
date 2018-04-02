@@ -39,8 +39,8 @@ function start ()
   
   if (process.env.ENV == "staging") {
     const options = {
-      cert: fs.readFileSync('./fullchain.pem'),
-      key: fs.readFileSync('./privkey.pem')
+      cert: fs.readFileSync('/etc/letsencrypt/live/staging.dephyned.com/fullchain.pem'),
+      key: fs.readFileSync('/etc/letsencrypt/live/staging.dephyned.com/privkey.pem')
     }
 
     app.listen(process.env.PORT || 8080);
@@ -51,5 +51,3 @@ function start ()
 };
 
 exports.start = start;
-
-//%2Fopt%2Fbitnami%2Fmongodb%2Ftmp%2Fmongodb-27017.sock
