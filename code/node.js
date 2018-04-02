@@ -35,12 +35,12 @@ function start ()
   });
 	
 	app.post('/sendEmail', mandrill.sendEmail)
-  app.use(express.static(__dirname));	
+  app.use(express.static(__dirname + '/static'));	
   
   if (process.env.ENV == "staging") {
     const options = {
-      cert: fs.readFileSync('/dephyned.com/fullchain.pem'),
-      key: fs.readFileSync('/dephyned.com/privkey.pem')
+      cert: fs.readFileSync('./fullchain.pem'),
+      key: fs.readFileSync('./privkey.pem')
     }
 
     app.listen(process.env.PORT || 8080);
