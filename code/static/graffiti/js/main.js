@@ -117,11 +117,14 @@ $(function () {
           if (formContent[i].name == "email") {
             var fieldValue = formContent[i].value.replace('%40', '@');
             values.contactEmailField = fieldValue;
-          } else if (formContent[i].name == "promoCode") {
-            values.contactMessageTextarea = referralCode;
           }
         }
         
+        if (referralCode) {
+          values.contactMessageTextarea = referralCode;
+        }
+        
+
         if (!values.contactMessageTextarea) {
           values.contactMessageTextarea = "NO PROMO CODE";
         }        
