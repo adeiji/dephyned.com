@@ -8,6 +8,7 @@ function start ()
 	var express = require('express');
 	var app = express();
   var mongoose = require('mongoose');
+  var bodyParser = require('body-parser');
 
   console.log(process.env.ENV);
   if (process.env.ENV == 'production') {
@@ -21,20 +22,17 @@ function start ()
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-	app.configure(function () {
-		app.use(express.bodyParser());
-		app.use(app.router);
+  app.use(bodyParser.json());
 
-		app.all('/', function(req, res, next) {
-        res.header("Access-Control-Allow-Origin", "*");
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-        res.header("Access-Control-Allow-Headers", "Content-Type");
-        res.setHeader('Access-Control-Allow-Credentials', false);
+  app.all('/', function(req, res, next) {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+      res.header("Access-Control-Allow-Headers", "Content-Type");
+      res.setHeader('Access-Control-Allow-Credentials', false);
 
-  			next();
- 		});
-	});
-
+      next();
+  });
+	
 	app.post('/sendEmail', mandrill.sendEmail)
 	app.use(express.static(__dirname));	
 	app.listen(process.env.PORT || 8080);
