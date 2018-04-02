@@ -11,7 +11,7 @@ function start ()
   var bodyParser = require('body-parser');
 
   console.log(process.env.ENV);
-  if (process.env.ENV == 'production') {
+  if (process.env.ENV == 'production' || process.env.ENV == 'staging') {
     var mongoDB = "mongodb://adeiji:Daniel2441914!!@localhost:27017/graffiti";
   } else {
     var mongoDB = "mongodb://localhost/graffiti"

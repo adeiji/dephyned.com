@@ -8,24 +8,24 @@ var MailChimpAPI = require('mailchimp').MailChimpAPI;
 var apiKey = "89c7778356f7ddfc9cf55fbb0d5f5e09-us13"
 
 function saveTester (body) {
-  // var tester = new Tester({
-  //   email: body.contactEmailField.toUpperCase(),
-  //   code: body.personalPromoCode.toUpperCase(),
-  //   inviteeCode: body.contactMessageTextarea.toUpperCase(),
-  //   date: new Date()
-  // })
+  var tester = new Tester({
+    email: body.contactEmailField.toUpperCase(),
+    code: body.personalPromoCode.toUpperCase(),
+    inviteeCode: body.contactMessageTextarea.toUpperCase(),
+    date: new Date()
+  })
 
 
-  // if (tester) {
-  //   tester.save(function (err, savedTester) {
-  //     if (err) {
-  //       console.log(err);
-  //       return err;
-  //     } else {
-  //       console.log(savedTester);
-  //     }
-  //   }) 
-  // }
+  if (tester) {
+    tester.save(function (err, savedTester) {
+      if (err) {
+        console.log(err);
+        return err;
+      } else {
+        console.log(savedTester);
+      }
+    }) 
+  }
   
   try {
     var api = new MailChimpAPI(apiKey, { version : '2.0' });
