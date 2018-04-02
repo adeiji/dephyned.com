@@ -37,10 +37,18 @@ function start ()
 	app.post('/sendEmail', mandrill.sendEmail)
   app.use(express.static(__dirname + '/static'));	
   
-  if (process.env.ENV == "staging" || process.env.ENV == "production") {
+  if (process.env.ENV == "staging") {
     const options = {
       cert: fs.readFileSync('/etc/letsencrypt/live/staging.dephyned.com/fullchain.pem'),
       key: fs.readFileSync('/etc/letsencrypt/live/staging.dephyned.com/privkey.pem')
+    }
+
+    app.listen(process.env.PORT || 8080);
+    https.createServer(options, app).listen(8443)
+  } else if (process.env.ENV == "production") {
+    const options = {
+      cert: fs.readFileSync('/etc/letsencrypt/live/dephyned.com/fullchain.pem'),
+      key: fs.readFileSync('/etc/letsencrypt/live/dephyned.com/privkey.pem')
     }
 
     app.listen(process.env.PORT || 8080);
