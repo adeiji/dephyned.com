@@ -43,116 +43,118 @@ function saveTester (body) {
 
 exports.sendEmail = function sendEmail (request, response) {
 
-	console.log('Request Received');
-	var email = request.body.contactEmailField;
-	var name = request.body.contactNameField;
-  var message = request.body.contactMessageTextarea;
-  var personalPromoCode = request.body.personalPromoCode;
-	//Get an HTML document which is the body of the actual email
-	var html = getHTMLDocument(email, name, message, personalPromoCode);
-	//var from_email = 'customercare@smart-two.com';
-	var from_email = 'graffiti@dephyned.com';
-	var from_name = 'Dephyned Customer Info Form';
-	console.log(request.body);
-	var to_email = 'adebayoiji@gmail.com';
+  if (process.env.ENV == "staging" || process.env.ENV == "production") {
+    console.log('Request Received');
+    var email = request.body.contactEmailField;
+    var name = request.body.contactNameField;
+    var message = request.body.contactMessageTextarea;
+    var personalPromoCode = request.body.personalPromoCode;
+    //Get an HTML document which is the body of the actual email
+    var html = getHTMLDocument(email, name, message, personalPromoCode);
+    //var from_email = 'customercare@smart-two.com';
+    var from_email = 'graffiti@dephyned.com';
+    var from_name = 'Dephyned Customer Info Form';
+    console.log(request.body);
+    var to_email = 'adebayoiji@gmail.com';
 
-	var message = {
-		'html' 			: html,
-		'subject'		: 'You have a potential client!',
-		'from_email' 	: from_email,
-		'from_name'		: from_name,
-		'to'			: [{
-			email 	: to_email,
-			name 	: 'Valued Customer',
-			type    : 'to'
-		}],
-		'headers' : {
-			'Reply-To'	: from_email
-		},
-		 "important": false,
-	    "track_opens": null,
-	    "track_clicks": null,
-	    "auto_text": null,
-	    "auto_html": null,
-	    "inline_css": true,
-	    "url_strip_qs": null,
-	    "preserve_recipients": null,
-	    "view_content_link": null,
-	    "tracking_domain": null,
-	    "signing_domain": null,
-	    "return_path_domain": null,
-	    "merge": true
-	};
+    var message = {
+      'html' 			: html,
+      'subject'		: 'You have a potential client!',
+      'from_email' 	: from_email,
+      'from_name'		: from_name,
+      'to'			: [{
+        email 	: to_email,
+        name 	: 'Valued Customer',
+        type    : 'to'
+      }],
+      'headers' : {
+        'Reply-To'	: from_email
+      },
+      "important": false,
+        "track_opens": null,
+        "track_clicks": null,
+        "auto_text": null,
+        "auto_html": null,
+        "inline_css": true,
+        "url_strip_qs": null,
+        "preserve_recipients": null,
+        "view_content_link": null,
+        "tracking_domain": null,
+        "signing_domain": null,
+        "return_path_domain": null,
+        "merge": true
+    };
 
-	var async = false;
-	var ip_pool = "Main Pool";
-	//Time to send at in formation YYYY-MM-DD HH:MM:SS 
-	var send_at = new Date()
-	send_at.setDate(send_at.getDate() - 100);
+    var async = false;
+    var ip_pool = "Main Pool";
+    //Time to send at in formation YYYY-MM-DD HH:MM:SS 
+    var send_at = new Date()
+    send_at.setDate(send_at.getDate() - 100);
 
-	console.log('Time to send :' + send_at);
+    console.log('Time to send :' + send_at);
 
-	mandrill_client.messages.send({"message": message, "async": async, "ip_pool": ip_pool }, 
-		function(result) {
-	    	console.log(result);
-	    	var responseJSON = {
-    			status  : 200,	
-    			success : 'Updated Successfully'
-        }
-        
-        response.end(JSON.stringify(responseJSON));
-        
-        if (personalPromoCode) {
-          var promoHTML = getPromoDocument(personalPromoCode)
-          var promoMessage = {
-              'html' 			: promoHTML,
-              'subject'		: 'Thank You For Signing Up As a Beta Tester and App Influencer For Graffiti!',
-              'from_email' 	: 'graffiti@dephyned.com',
-              'from_name'		: 'Graffiti App',
-              'to'			: [{
-                email 	: email,
-                name 	: 'Valued Beta Tester and App Influencer',
-                type    : 'to'
-              }],
-              'headers' : {
-                'Reply-To'	: 'graffiti@dephyned.com'
-              },
-              "important": false,
-                "track_opens": true,
-                "track_clicks": true,
-                "auto_text": null,
-                "auto_html": null,
-                "inline_css": true,
-                "url_strip_qs": null,
-                "preserve_recipients": null,
-                "view_content_link": null,
-                "tracking_domain": null,
-                "signing_domain": null,
-                "return_path_domain": null,
-                "merge": true
+    mandrill_client.messages.send({"message": message, "async": async, "ip_pool": ip_pool }, 
+      function(result) {
+          console.log(result);
+          var responseJSON = {
+            status  : 200,	
+            success : 'Updated Successfully'
           }
-      
-          mandrill_client.messages.send({"message": promoMessage, "async": async, "ip_pool": ip_pool }, 
-          function(result) {
-              console.log(result);
-              var responseJSON = {
-                status  : 200,	
-                success : 'Updated Successfully'
-              }
-              saveTester(request.body);          
-          }, function(e) {      
-            // Mandrill returns the error as an object with name and message keys
-            console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);          
-            // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
-          });
-        }      
-	}, function(e) {      
-	    // Mandrill returns the error as an object with name and message keys
-	    console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
-	    response.send('Failed to send');
-	    response.end();
-	    // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
-  });
+          
+          response.end(JSON.stringify(responseJSON));
+          
+          if (personalPromoCode) {
+            var promoHTML = getPromoDocument(personalPromoCode)
+            var promoMessage = {
+                'html' 			: promoHTML,
+                'subject'		: 'Thank You For Signing Up As a Beta Tester and App Influencer For Graffiti!',
+                'from_email' 	: 'graffiti@dephyned.com',
+                'from_name'		: 'Graffiti App',
+                'to'			: [{
+                  email 	: email,
+                  name 	: 'Valued Beta Tester and App Influencer',
+                  type    : 'to'
+                }],
+                'headers' : {
+                  'Reply-To'	: 'graffiti@dephyned.com'
+                },
+                "important": false,
+                  "track_opens": true,
+                  "track_clicks": true,
+                  "auto_text": null,
+                  "auto_html": null,
+                  "inline_css": true,
+                  "url_strip_qs": null,
+                  "preserve_recipients": null,
+                  "view_content_link": null,
+                  "tracking_domain": null,
+                  "signing_domain": null,
+                  "return_path_domain": null,
+                  "merge": true
+            }
+        
+            mandrill_client.messages.send({"message": promoMessage, "async": async, "ip_pool": ip_pool }, 
+            function(result) {
+                console.log(result);
+                var responseJSON = {
+                  status  : 200,	
+                  success : 'Updated Successfully'
+                }
+                saveTester(request.body);          
+            }, function(e) {      
+              // Mandrill returns the error as an object with name and message keys
+              console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);          
+              // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+            });
+          }      
+    }, function(e) {      
+        // Mandrill returns the error as an object with name and message keys
+        console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
+        response.send('Failed to send');
+        response.end();
+        // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+    });
+  }
 }
 
 function changeDateToUSA (date)

@@ -9,6 +9,7 @@ function start ()
 	var app = express();
   var mongoose = require('mongoose');
   var bodyParser = require('body-parser');
+  var https = require('https');
 
   console.log(process.env.ENV);
   if (process.env.ENV == 'production' || process.env.ENV == 'staging') {
@@ -34,8 +35,19 @@ function start ()
   });
 	
 	app.post('/sendEmail', mandrill.sendEmail)
-	app.use(express.static(__dirname));	
-	app.listen(process.env.PORT || 8080);
+  app.use(express.static(__dirname));	
+  
+  if (process.env.ENV == "staging") {
+    const options = {
+      cert: fs.readFileSync('/etc/letsencrypt/live/staging.dephyned.com/fullchain.pem'),
+      key: fs.readFileSync('/etc/letsencrypt/live/staging.dephyned.com/privkey.pem')
+    }
+
+    app.listen(process.env.PORT || 8080);
+    https.createServer(options, app).listen(8443)
+  } else {
+    app.listen(process.env.PORT || 8080);
+  }
 };
 
 exports.start = start;
