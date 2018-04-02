@@ -2,10 +2,14 @@ $(function () {
     "use strict";
 
     var promoCode = "BETA" + (Math.floor(Math.random()*90000) + 10000);
-    var promoPhrase = "Enter promo code " + promoCode + " when you sign up"
-    $(document).ready(function () {
+    var promoPhrase = "https://dephyned.com/graffiti?id=" + promoCode
+    var referralCode;
+
+    $(document).ready(function () {      
+      $("#share").hide();
       $(".promo").append(promoPhrase)
       $('#cp-notification').hide()      
+      referralCode = getUrlVars()["id"];
     });
 
     $(".copy-button").click(function () {
@@ -15,7 +19,16 @@ $(function () {
       document.execCommand("copy");
       $temp.remove();            
       $('#cp-notification').hide().html('<span class="success"><i class="fa fa-envelope"></i>' + "Promo phrase copied to clipboard" + '</span>').fadeIn("slow");
+      $('#mc-notification').hide();
     })        
+
+    function getUrlVars() {
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+      });
+      return vars;
+    }
 
     /* ==========================================================================
    onscroll animation
@@ -105,7 +118,7 @@ $(function () {
             var fieldValue = formContent[i].value.replace('%40', '@');
             values.contactEmailField = fieldValue;
           } else if (formContent[i].name == "promoCode") {
-            values.contactMessageTextarea = formContent[i].value;
+            values.contactMessageTextarea = referralCode;
           }
         }
         
@@ -134,7 +147,7 @@ $(function () {
                 } else {
                     var message = data.message;
                     $('#mc-notification').hide().html('<span class="success"><i class="fa fa-envelope"></i>' + 'Awesome! Thanks for signing up!  An introductory email was just sent to you!' + '</span>').fadeIn("slow");
-                
+                    $("#share").fadeIn("slow");                
                 }
             }
         });
