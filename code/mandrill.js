@@ -4,27 +4,41 @@ var mandrill = require('mandrill-api/mandrill');
 var mandrill_client = new mandrill.Mandrill(api_key);
 var mongoose = require('mongoose');
 var Tester = require('./models/betatesters')
+var MailChimpAPI = require('mailchimp').MailChimpAPI;
+var apiKey = "89c7778356f7ddfc9cf55fbb0d5f5e09-us13"
 
 function saveTester (body) {
-  var tester = new Tester({
-    email: body.contactEmailField.toUpperCase(),
-    code: body.personalPromoCode.toUpperCase(),
-    inviteeCode: body.contactMessageTextarea.toUpperCase(),
-    date: new Date()
-  })
+  // var tester = new Tester({
+  //   email: body.contactEmailField.toUpperCase(),
+  //   code: body.personalPromoCode.toUpperCase(),
+  //   inviteeCode: body.contactMessageTextarea.toUpperCase(),
+  //   date: new Date()
+  // })
 
 
-  if (tester) {
-    tester.save(function (err, savedTester) {
-      if (err) {
-        console.log(err);
-        return err;
-      } else {
-        console.log(savedTester);
-      }
-    }) 
-  }
+  // if (tester) {
+  //   tester.save(function (err, savedTester) {
+  //     if (err) {
+  //       console.log(err);
+  //       return err;
+  //     } else {
+  //       console.log(savedTester);
+  //     }
+  //   }) 
+  // }
   
+  try {
+    var api = new MailChimpAPI(apiKey, { version : '2.0' });
+    var data = { id: '91cb1e461d', email_address: body.contactEmailField, status: "subscribed", timestamp_signup: new Date().toDateString() };
+    api.call('lists', 'members', data, function (err, data) {
+      if (err)
+        console.log(err.message);
+      else
+        console.log(JSON.stringify(data)); // Do something with your data! 
+    })
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 
 exports.sendEmail = function sendEmail (request, response) {

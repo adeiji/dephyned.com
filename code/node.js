@@ -9,6 +9,7 @@ function start ()
 	var app = express();
   var mongoose = require('mongoose');
 
+  console.log(process.env.ENV);
   if (process.env.ENV == 'production') {
     var mongoDB = "mongodb://adeiji:Daniel2441914!!@localhost:27017/graffiti";
   } else {
@@ -37,3 +38,5 @@ function start ()
 };
 
 exports.start = start;
+
+//%2Fopt%2Fbitnami%2Fmongodb%2Ftmp%2Fmongodb-27017.sock
