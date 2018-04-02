@@ -39,8 +39,8 @@ function start ()
   
   if (process.env.ENV == "staging") {
     const options = {
-      cert: fs.readFileSync('/etc/letsencrypt/live/staging.dephyned.com/fullchain.pem'),
-      key: fs.readFileSync('/etc/letsencrypt/live/staging.dephyned.com/privkey.pem')
+      cert: fs.readFileSync('/dephyned.com/fullchain.pem'),
+      key: fs.readFileSync('/dephyned.com/privkey.pem')
     }
 
     app.listen(process.env.PORT || 8080);
