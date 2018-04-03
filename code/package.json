@@ -14,6 +14,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "mailchimp": "^1.2.0",
+    "mandrill": "^0.1.0",
     "mandrill-api": "^1.0.45",
     "mongoose": "^5.0.12"
   },
