@@ -1,0 +1,38 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="wrapper">
+  <div class="row">        
+    <div class="col-sm-12">
+        <div class="invite d-flex">
+          <div id="tagline">
+              <h1>GRAFFITI</h1>
+              <h2>Never Forget the Cool Places You've Been</h2>
+              <br>              
+              <p><strong>Remember and share</strong> with friends all the cool places you've been and want to go.  Share your cool content with
+                <strong>tons</strong> of people.
+              <br>
+              </p>
+              <div class="spacing"></div>
+              <p><strong>Sign up</strong> now to become a <strong>Beta Tester and App Influencer</strong> and get <strong>tons of free features</strong>.  Spots are limited so <strong>don't delay!</strong></p>
+              <div class="input-group mb-3 sign-up-section">
+                  <input type="text" class="form-control" placeholder="Enter Your Email" aria-label="Enter email address" [(ngModel)]="email" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" (click)="addEmailClicked(email)" type="button">Get Free Stuff</button>
+                  </div>
+              </div>
+              <div class="alert alert-danger" [hidden]="!error">
+                {{error}}
+              </div>
+          </div>                    
+        </div>
+    </div>      
+  </div>  
+  <div class="row bottom">
+    <div class="col-sm-12 thank-you" [hidden]="hideSuccess">
+      <div class="alert alert-success">Thank you so much for signing up!  We just sent you a little introductory email.</div>
+      <p><strong>Know anyone else who might be interested?</strong>  
+      <br>
+      <strong>Share the link below.</strong>  Each user you have sign up means <strong>more free stuff for you.</strong></p>
+      <span class="promo">{{promoPhrase}}</span>      
+    </div>    
+  </div>
+</div>

@@ -1,0 +1,116 @@
+.wrapper {
+  height: 100%;
+  width: 65%;   
+  align-content: center;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.invite {
+  width: 100%; /*can be in percentage also.*/
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+}
+
+.flex {
+  display:flex;
+}
+
+#tagline {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 100px;
+  color: white;
+  width: 85%;
+  text-align: center;
+}
+
+.thank-you {
+  text-align: center;
+  margin-top: 35px;
+}
+
+.spacing {
+  height: 35px;
+}
+
+h2 {
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 75px;
+  letter-spacing: 5px;
+  font-weight: 600;
+  
+}
+
+p {
+  font-weight: 200;
+  font-size: 20px;  
+}
+
+.sign-up-section {
+  margin-top: 0px;
+  width: 75%;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sign-up-section button {
+  width: 130px;
+  background-color: rgb(45, 179, 255);
+  border: none;
+}
+
+.photo img {
+  height: auto;
+  width: auto;
+  margin-top: 125px;
+}
+
+.share {
+  margin-left: auto;
+  margin-right: auto;  
+}
+
+strong {
+  font-size: 25px;
+  /* color: rgb(45, 179, 255); */
+}
+
+@media only screen and (max-width: 1400px) {
+  .wrapper {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  #tagline {
+      width: 100%;
+      margin-top: 15px;
+  }
+
+  .sign-up-section {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 55px;
+  }
+
+  .wrapper {
+    width: 95%;    
+  }
+
+  .bottom {
+    margin-bottom: 100px;
+  }
+
+  .promo {
+    font-size: 18px;
+  }
+}

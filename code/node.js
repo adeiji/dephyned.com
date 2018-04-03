@@ -35,7 +35,8 @@ function start ()
   });
 	
 	app.post('/sendEmail', mandrill.sendEmail)
-  app.use(express.static(__dirname + '/static'));	
+  app.use(express.static(__dirname + '/static'));
+  app.use(express.static(__dirname + '/static/graffiti/share/beta'))
   
   if (process.env.ENV == "staging") {
     const options = {
