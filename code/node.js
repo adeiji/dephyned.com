@@ -46,6 +46,14 @@ function start ()
       })
   })
 
+  app.get('/trafodProductId', function (req, res) {
+    res.send( 
+      {
+        productId: "com.dephyned.trafod"
+      }
+    )
+  })
+
   if (process.env.ENV == "staging") {
     const options = {
       cert: fs.readFileSync('/etc/letsencrypt/live/staging.dephyned.com/fullchain.pem'),
