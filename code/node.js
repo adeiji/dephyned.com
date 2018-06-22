@@ -38,6 +38,14 @@ function start ()
   app.use(express.static(__dirname + '/static'));
   app.use(express.static(__dirname + '/static/graffiti/share/beta'))
   
+  app.get('/salesPitch', function (req, res) {
+    res.send(
+      { 
+        title: "Level 2 Coming July 20, 2018",
+        subtitle: "Subscribe before July 1, 2018 and get your first month free." 
+      })
+  })
+
   if (process.env.ENV == "staging") {
     const options = {
       cert: fs.readFileSync('/etc/letsencrypt/live/staging.dephyned.com/fullchain.pem'),
