@@ -46,10 +46,10 @@ function start ()
       })
   })
 
-  app.get('/trafodProductId', function (req, res) {
+  app.get('/trafodProductIds', function (req, res) {
     res.send( 
       {
-        productId: "com.dephyned.trafod"
+        productIds: ["com.dephyned.trafod"]
       }
     )
   })
