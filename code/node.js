@@ -40,9 +40,10 @@ function start ()
   
   app.get('/salesPitch', function (req, res) {
     res.send(
-      { 
-        title: "Level 2 Coming July 20, 2018",
-        subtitle: "Subscribe before July 1, 2018 and get your first month free." 
+      {         
+        messages: ["Subscribe now to keep playing and see how your story will end. Level 2 coming July 16th.","Subscribe before July 1, 2018 and get 30% off. $3.49 a month instead of $4.99 a month."],
+        title: "Level 2 coming July 16th.",
+        buttonText: "Subscribe now for 3.49/month"
       })
   })
 
